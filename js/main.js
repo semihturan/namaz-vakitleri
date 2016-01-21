@@ -23,7 +23,7 @@ function loadOptions() {
 }
 
 function getAndStoreConfigData() {
-  var $secondsEnabledCheckbox = $('#secondsEnabledFormatCheckbox');
+  var $secondsEnabledCheckbox = $('#secondsEnabledCheckbox');
 
   var options = {
     secondsEnabled: $secondsEnabledCheckbox[0].checked
