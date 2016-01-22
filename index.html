@@ -80,14 +80,15 @@
 
     // Set the return URL depending on the runtime environment
     var return_to = getQueryParam('return_to', 'pebblejs://close#');
-    document.location.href = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
+    document.location.href = return_to;
+    // + encodeURIComponent(JSON.stringify(getConfigData()));
   });
 
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
 
     // Load any previously saved configuration, if available
-    if(localStorage['high_contrast']) {
+    if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
     }
   })();
