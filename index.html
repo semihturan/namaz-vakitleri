@@ -1,23 +1,95 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Slate Example Configuration</title>
+  <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+  <script src='js/slate.min.js'></script>
+  <style>
+  .title {
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #888888;
+    text-align: center;
+  }
+  </style>
+  </head>
 
-<div class="home">
+  <body>
+    <h1 class='title'>Slate Example Configuration</h1>
 
-  <h1 class="page-heading">Posts</h1>
+    <div class='item-container'>
+      <div class='item-container-content'>
+        <div class='item'>
+          Use this configuration page to choose the settings you would like applied to this app.
+        </div>
+      </div>
+    </div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <div class='item-container'>
+      <div class='item-container-header'>Visual</div>
+      <div class='item-container-content'>
+        <label class='item'>
+          Seconds Enabled
+          <input id='high_contrast_checkbox' type='checkbox' class='item-toggle'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+        Lorem ipsum dolor 
+      </div>
+    </div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+    <div class='item-container'>
+      <div class='button-container'>
+        <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
+      </div>
+    </div>
+  </body>
+  <script>
+  function getConfigData() {
+    var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
+ 
+    var options = {
+      'seconds_enabled': secondsEnabledCheckbox.checked
+    };
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+    // Save for next launch
+    localStorage['seconds_enabled'] = options['seconds_enabled'];
 
-</div>
+    console.log('Got options: ' + JSON.stringify(options));
+    return options;
+  }
+
+  function getQueryParam(variable, defaultValue) {
+    var query = location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (pair[0] === variable) {
+        return decodeURIComponent(pair[1]);
+      }
+    }
+    return defaultValue || false;
+  }
+ 
+  var submitButton = document.getElementById('submit_button');
+  submitButton.addEventListener('click', function() {
+    console.log('Submit');
+
+    // Set the return URL depending on the runtime environment
+    var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
+  });
+
+  (function() {
+    var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
+
+    // Load any previously saved configuration, if available
+    if(localStorage['high_contrast']) {
+      secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
+    }
+  })();
+  </script>
+</html>
