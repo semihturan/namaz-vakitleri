@@ -42,7 +42,7 @@
       <div class='item-container-content'>
         <label class='item'>
           Birinci Arka plan rengi
-          <input id='background_color_picker_primary' type='text' class='item-color item-color-sunny' value='#000000'>
+          <input id='background_color_picker_primary' type='text' class='item-color item-color-normal' value='#000000'>
         </label>
       </div>
       <div class='item-container-footer'>
@@ -51,11 +51,21 @@
       <div class='item-container-content'>
         <label class='item'>
           İkinci Arka plan rengi
-          <input id='background_color_picker_secondary' type='text' class='item-color item-color-sunny' value='#000000'>
+          <input id='background_color_picker_secondary' type='text' class='item-color item-color-normal' value='#000000'>
         </label>
       </div>
       <div class='item-container-footer'>
       Tarih, konum ve hava durumu bilgilerinin yer aldığı bölümün arka plan rengini seçiniz.
+      </div>
+    </div>
+    <div class='item-container-content'>
+        <label class='item'>
+          Metin rengi
+          <input id='text_color_picker' type='text' class='item-color item-color-normal' value='#000000'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+      Bütün metinlerin rengini seçiniz.
       </div>
     </div>
 
@@ -70,17 +80,21 @@
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
+    var textColorPicker = document.getElementById('text_color_picker');
  
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked,
       'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value 
+      'text_color_picker': textColorPicker.value 
+      
     };
 
     // Save for next launch
     localStorage['seconds_enabled'] = options['seconds_enabled'];
     localStorage['background_color_picker_primary'] = options['background_color_picker_primary'];
     localStorage['background_color_picker_secondary'] = options['background_color_picker_secondary'];
+    localStorage['text_color_picker'] = options['text_color_picker'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -112,12 +126,14 @@
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
+    var textColorPicker = document.getElementById('text_color_picker');
 
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
       backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
       backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
+      textColorPicker.value = localStorage['text_color_picker'];
     }
   })();
   </script>
