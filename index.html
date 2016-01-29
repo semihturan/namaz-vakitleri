@@ -2,7 +2,6 @@
 <html>
   <head>
   <title>Namaz - Uygulama Ayarları</title>
-  <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
   <link rel='stylesheet' type='text/css' href='css/slate.css'>
   <script src='js/slate.min.js'></script>
   <style>
@@ -73,8 +72,8 @@
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
  
     var options = {
-      'seconds_enabled': secondsEnabledCheckbox.checked
-      'background_color_picker_primary': backgroundColorPickerPrimary.value
+      'seconds_enabled': secondsEnabledCheckbox.checked,
+      'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value 
     };
 
@@ -93,7 +92,7 @@
     for (var i = 0; i < vars.length; i++) {
       var pair = vars[i].split('=');
       if (pair[0] === variable) {
-        return decodeURIComponent(pair[0]);
+        return decodeURIComponent(pair[2]);
       }
     }
     return defaultValue || false;
@@ -117,8 +116,8 @@
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
-      backgroundColorPickerPrimary.value = JSON.parse(localStorage['background_color_picker_primary']);
-      backgroundColorPickerSecondary.value = JSON.parse(localStorage['background_color_picker_secondary']);
+      backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
+      backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
     }
   })();
   </script>
