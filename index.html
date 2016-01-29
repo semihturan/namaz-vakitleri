@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Slate Example Configuration</title>
+  <title>Namaz - Uygulama Ayarları</title>
   <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
   <script src='js/slate.min.js'></script>
   <style>
@@ -18,45 +18,69 @@
   </head>
 
   <body>
-    <h1 class='title'>Slate Example Configuration</h1>
+    <h1 class='title'>Namaz</h1>
 
     <div class='item-container'>
       <div class='item-container-content'>
         <div class='item'>
-          Use this configuration page to choose the settings you would like applied to this app.
+          Uygulamayı kişisel tercihlerinize göre ayarlayabilirsiniz.
         </div>
       </div>
     </div>
 
     <div class='item-container'>
-      <div class='item-container-header'>Visual</div>
+      <div class='item-container-header'>Görsel</div>
       <div class='item-container-content'>
         <label class='item'>
-          Seconds Enabled
+          Saniyeleri de göster
           <input id='seconds_enabled_checkbox' type='checkbox' class='item-toggle'>
         </label>
       </div>
       <div class='item-container-footer'>
-        Lorem ipsum dolor 
+        Not: Bu özellik pil tüketimini arttırır.
+      </div>
+      <div class='item-container-content'>
+        <label class='item'>
+          Birinci Arka plan rengi
+          <input id='background_color_picker_primary' type='text' class='item-color item-color-sunny' value='#000000'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+      Uygulamanın genel arka plan rengini seçiniz.
+      </div>
+      <div class='item-container-content'>
+        <label class='item'>
+          İkinci Arka plan rengi
+          <input id='background_color_picker_secondary' type='text' class='item-color item-color-sunny' value='#000000'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+      Tarih, konum ve hava durumu bilgilerinin yer aldığı bölümün arka plan rengini seçiniz.
       </div>
     </div>
 
     <div class='item-container'>
       <div class='button-container'>
-        <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
+        <input id='submit_button' type='button' class='item-button' value='KAYDET'>
       </div>
     </div>
   </body>
   <script>
   function getConfigData() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
+    var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
+    var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
  
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked
+      'background_color_picker_primary': backgroundColorPickerPrimary.value
+      'background_color_picker_secondary': backgroundColorPickerSecondary.value 
     };
 
     // Save for next launch
     localStorage['seconds_enabled'] = options['seconds_enabled'];
+    localStorage['background_color_picker_primary'] = options['background_color_picker_primary'];
+    localStorage['background_color_picker_secondary'] = options['background_color_picker_secondary'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -86,10 +110,14 @@
 
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
+    var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
+    var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
 
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
+      backgroundColorPickerPrimary.value = JSON.parse(localStorage['background_color_picker_primary']);
+      backgroundColorPickerSecondary.value = JSON.parse(localStorage['background_color_picker_secondary']);
     }
   })();
   </script>

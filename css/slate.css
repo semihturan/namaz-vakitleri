@@ -8,7 +8,7 @@
   outline-width: 0; }
 
 a {
-  color: #FF4700;
+  color: #0055AA;
   text-decoration: none; }
 
 body {
@@ -213,8 +213,8 @@ input[type=date] {
   border-color: #DEDEDE; }
 
 .item-radio:checked + .item-styled-radio {
-  border-color: #FF4700;
-  background-color: #FF4700; }
+  border-color: #0055AA;
+  background-color: #0055AA; }
 
 .item-radio:checked + .item-styled-radio:before {
   content: "";
@@ -311,7 +311,7 @@ input[type=date] {
 .item-button {
   width: 60%;
   height: 35px;
-  background-color: #FF4700;
+  background-color: #0055AA;
   border-radius: 5px;
   color: white;
   font-size: 0.8em;
@@ -337,7 +337,7 @@ input[type=date] {
   display: table-cell;
   position: relative;
   color: #FF4700;
-  border: 1px solid #FF4700;
+  border: 1px solid #0055AA;
   border-right-width: 0;
   font-size: 14px;
   padding: 5px 0;
@@ -355,7 +355,7 @@ input[type=date] {
   border-right-width: 1px; }
 
 .tab-button.active {
-  background-color: #FF4700;
+  background-color: #0055AA;
   color: #F7F7F7; }
 
 .item-slider {
@@ -378,7 +378,7 @@ input[type=date] {
   left: -1001px;
   height: 2px;
   width: 1000px;
-  background: #FF4700; }
+  background: #0055AA; }
 
 .item-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
