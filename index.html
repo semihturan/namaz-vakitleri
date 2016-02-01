@@ -42,7 +42,7 @@
       <div class='item-container-content'>
         <label class="item">
           Hava durumu güncelleme sıklığı
-          <select name="weather_selector" dir='rtl' class="item-select">
+          <select id="weather_selector" name="select-1" dir='rtl' class="item-select">
             <option class="item-select-option">Hava durumu kapalı</option>
             <option class="item-select-option" selected>Yarım saatte bir</option>
             <option class="item-select-option">Saatte bir</option>
@@ -149,7 +149,7 @@
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
-      weatherSelector.selected = JSON.parse(localStorage['weather_selector']);
+      weatherSelector.selected = localStorage['weather_selector'];
       backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
       backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
       textColorPicker.value = localStorage['text_color_picker'];
