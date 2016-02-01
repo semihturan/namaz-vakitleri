@@ -9,8 +9,8 @@
     padding: 15px 10px;
     text-transform: uppercase;
     font-family: 'PT Sans', sans-serif;
-    font-size: 1.2em;
-    font-weight: 500;
+    font-size: 1.4em;
+    font-weight: 600;
     color: #888888;
     text-align: center;
   }
@@ -29,7 +29,7 @@
     </div>
 
     <div class='item-container'>
-      <div class='item-container-header'>Görsel</div>
+      <div class='item-container-header'>Ayarlar</div>
       <div class='item-container-content'>
         <label class='item'>
           Saniyeleri de göster
@@ -38,6 +38,21 @@
       </div>
       <div class='item-container-footer'>
         Not: Bu özellik pil tüketimini arttırır.
+      </div>
+      <div class='item-container-content'>
+        <label class="item">
+          Hava durumu güncelleme sıklığı
+          <select name="weather_selector" dir='rtl' class="item-select">
+            <option class="item-select-option">Hava durumu kapalı</option>
+            <option class="item-select-option" selected>Yarım saatte bir</option>
+            <option class="item-select-option">Saatte bir</option>
+            <option class="item-select-option">İki saatte bir</option>
+            <option class="item-select-option">Günde bir</option>
+          </select>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+        Not: Güncelleme sıklığı arttıkça pil tüketimi de artar.
       </div>
       <div class='item-container-content'>
         <label class='item'>
@@ -78,18 +93,21 @@
   <script>
   function getConfigData() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
+    var weatherSelector = document.getElementById('weather_selector');
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
  
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked,
+      'weather_selector': weatherSelector.value,
       'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value, 
-      'text_color_picker': textColorPicker.value 
+      'text_color_picker': textColorPicker.value
     };
 
     // Save for next launch
+    localStorage['seconds_enabled'] = options['seconds_enabled'];
     localStorage['seconds_enabled'] = options['seconds_enabled'];
     localStorage['background_color_picker_primary'] = options['background_color_picker_primary'];
     localStorage['background_color_picker_secondary'] = options['background_color_picker_secondary'];
@@ -123,6 +141,7 @@
 
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
+    var weatherSelector = document.getElementById('weather_selector');
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
@@ -130,6 +149,7 @@
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
+      weatherSelector.value = localStorage['weather_selector'];
       backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
       backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
       textColorPicker.value = localStorage['text_color_picker'];
