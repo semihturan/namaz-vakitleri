@@ -101,7 +101,7 @@
  
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked,
-      'weather_selector': weatherSelector.text,
+      'weather_selector': weatherSelector.value,
       'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value, 
       'text_color_picker': textColorPicker.value
@@ -151,7 +151,7 @@
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
-      weatherSelector.text = localStorage['weather_selector'];
+      weatherSelector.value = localStorage['weather_selector'];
       backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
       backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
       textColorPicker.value = localStorage['text_color_picker'];
