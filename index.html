@@ -93,14 +93,14 @@
   <script>
   function getConfigData() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
-    var weatherSelector = document.getElementById('weather_selector');
+    var weatherSelector = document.getElementById('weather_selector').options[document.getElementById('weather_selector').selectedIndex].text;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
  
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked,
-      'weather_selector': weatherSelector.selected,
+      'weather_selector': weatherSelector.value,
       'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value, 
       'text_color_picker': textColorPicker.value
@@ -141,7 +141,7 @@
 
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
-    var weatherSelector = document.getElementById('weather_selector');
+    var weatherSelector = document.getElementById('weather_selector').options[document.getElementById('weather_selector').selectedIndex].text;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
@@ -149,7 +149,7 @@
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
-      weatherSelector.selected = JSON.parse(localStorage['weather_selector']);
+      weatherSelector.selected = localStorage['weather_selector'];
       backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
       backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
       textColorPicker.value = localStorage['text_color_picker'];
