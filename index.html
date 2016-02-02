@@ -94,7 +94,7 @@
   function getConfigData() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
     var t = document.getElementById("weather_selector");
-    var weatherSelector = terminal.options[t.selectedIndex].text;
+    var weatherSelector = t.options[t.selectedIndex].text;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
@@ -143,7 +143,7 @@
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
     var t = document.getElementById("weather_selector");
-    var weatherSelector = terminal.options[t.selectedIndex].text;
+    var weatherSelector = t.options[t.selectedIndex].text;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
