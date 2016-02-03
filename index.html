@@ -94,8 +94,9 @@
   function getConfigData() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
     // var weatherSelector = document.getElementById("weather_selector").text;
-    var t = document.getElementById("weather_selector");
-    var weatherSelector = t.options[t.selectedIndex].text;
+    var x = document.getElementById('weather_selector').selectedIndex;
+    var y = document.getElementById('weather_selector').options
+    var weatherSelector = y[x].text;
     console.log('Weather selector bu: ' + weather_selector);
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
@@ -103,7 +104,7 @@
  
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked,
-      'weather_selector': weatherSelector.text,
+      'weather_selector': weatherSelector,
       'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value, 
       'text_color_picker': textColorPicker.value
@@ -145,8 +146,9 @@
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
     // var weatherSelector = document.getElementById("weather_selector").text;
-    var t = document.getElementById("weather_selector");
-    var weatherSelector = t.options[t.selectedIndex].text;
+    var x = document.getElementById('weather_selector').selectedIndex;
+    var y = document.getElementById('weather_selector').options
+    var weatherSelector = y[x].text;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
