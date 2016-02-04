@@ -92,7 +92,6 @@
   <script>
   function getConfigData() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
-    // var weatherSelector = document.getElementById("weather_selector").text;
     var x = document.getElementById('weather_selector').selectedIndex;
     var y = document.getElementById('weather_selector').options
     var weatherSelector = y[x].text;
@@ -141,12 +140,10 @@
     // Set the return URL depending on the runtime environment
     var return_to = getQueryParam('return_to', 'pebblejs://close#');
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
-    // + encodeURIComponent(JSON.stringify(getConfigData()));
   });
 
   (function() {
     var secondsEnabledCheckbox = document.getElementById('seconds_enabled_checkbox');
-    // var weatherSelector = document.getElementById("weather_selector").text;
     var x = document.getElementById('weather_selector').selectedIndex;
     var y = document.getElementById('weather_selector').options
     var weatherSelector = y[x].text;
