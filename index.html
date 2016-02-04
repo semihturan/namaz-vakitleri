@@ -43,7 +43,7 @@
           Güncelleme yoğunluğu
           <select id="weather_selector" name="select-1" dir='rtl' class="item-select">
             <option class="item-select-option">Hava durumu kapalı</option>
-            <option class="item-select-option" selected>Yarım saatte bir</option>
+            <option class="item-select-option">Yarım saatte bir</option>
             <option class="item-select-option">Saatte bir</option>
             <option class="item-select-option">İki saatte bir</option>
             <option class="item-select-option">Günde iki</option>
@@ -96,7 +96,7 @@
     var x = document.getElementById('weather_selector').selectedIndex;
     var y = document.getElementById('weather_selector').options
     var weatherSelector = y[x].text;
-    console.log('Weather selector bu: ' + weather_selector);
+    var weatherSelectorIndex = y[x].index;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
@@ -104,6 +104,7 @@
     var options = {
       'seconds_enabled': secondsEnabledCheckbox.checked,
       'weather_selector': weatherSelector,
+      'weather_selector_index': weatherSelectorIndex,
       'background_color_picker_primary': backgroundColorPickerPrimary.value,
       'background_color_picker_secondary': backgroundColorPickerSecondary.value, 
       'text_color_picker': textColorPicker.value
@@ -112,6 +113,7 @@
     // Save for next launch
     localStorage['seconds_enabled'] = options['seconds_enabled'];
     localStorage['weather_selector'] = options['weather_selector'];
+    localStorage['weather_selector_index'] = options['weather_selector_index'];
     localStorage['background_color_picker_primary'] = options['background_color_picker_primary'];
     localStorage['background_color_picker_secondary'] = options['background_color_picker_secondary'];
     localStorage['text_color_picker'] = options['text_color_picker'];
@@ -148,6 +150,7 @@
     var x = document.getElementById('weather_selector').selectedIndex;
     var y = document.getElementById('weather_selector').options
     var weatherSelector = y[x].text;
+    var weatherSelectorIndex = y[x].index;
     var backgroundColorPickerPrimary = document.getElementById('background_color_picker_primary');
     var backgroundColorPickerSecondary = document.getElementById('background_color_picker_secondary');
     var textColorPicker = document.getElementById('text_color_picker');
@@ -155,10 +158,13 @@
     // Load any previously saved configuration, if available
     if(localStorage['seconds_enabled']) {
       secondsEnabledCheckbox.checked = JSON.parse(localStorage['seconds_enabled']);
-      weatherSelector.text = localStorage['weather_selector'];
+      weatherSelector = localStorage['weather_selector'];
+      weatherSelectorIndex = localStorage['weather_selector_index'];
+      document.getElementById("weather_selector").selectedIndex = localStorage['weather_selector_index'];
       backgroundColorPickerPrimary.value = localStorage['background_color_picker_primary'];
       backgroundColorPickerSecondary.value = localStorage['background_color_picker_secondary'];
       textColorPicker.value = localStorage['text_color_picker'];
+      console.log('Fetched options: ' + JSON.stringify(localStorage));
     }
   })();
   </script>
